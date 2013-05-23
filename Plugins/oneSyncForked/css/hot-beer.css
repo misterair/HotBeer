@@ -1,0 +1,11 @@
+.onsyncButton {
+    font-family: 'mfg_labs_iconsetregular';
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 22px;
+    margin-right: 6px;
+}
+
+a.onsyncButton {
+    color: #FC4C03;
+}

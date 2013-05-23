@@ -1,0 +1,51 @@
+
+.fleaditLaterButton {
+    color: #888;
+    cursor: pointer;
+    float: left;
+    font-size: 12px;
+    font-weight: lighter;
+    line-height: 10px;
+    margin-right: 4px;
+    position: relative;
+    text-shadow: 1px 1px #FFFFFF;
+}
+
+.fleaditLaterButton:after {content:'\23F2';font-family: "mfg_labs_iconsetregular";}
+
+#main aside.fleaditLaterMenu{
+	background-color: #3C3C3C;
+}
+
+.roll:before {
+    content:'\23F2';
+    font-family: "mfg_labs_iconsetregular";
+    font-size: 14px;
+    color:#555;
+    font-weight: lighter;
+    margin-left: 4px;
+    margin-right: 10px;
+}
+.roll:active + ul, .roll:focus + ul {
+    display: inline-block!important;
+}
+.rollList {
+    display: none!important;
+}
+.rollList:hover {
+    display: inline-block!important;
+}
+
+.rollList li {
+    float: left;
+    position: relative;
+    text-align: left;
+}
+
+.rollClick {
+    font-family: "mfg_labs_iconsetregular";
+    font-size: 10px;
+    font-weight: lighter;
+    margin-right: 4px;
+}
+a.rollClick {color:#FC4C03}

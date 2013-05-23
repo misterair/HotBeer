@@ -1,0 +1,118 @@
+
+@font-face {
+    font-family: "mfg_labs_iconsetregular";
+    src: url('fonts/mfglabsiconset-webfont.eot');
+    src: url('fonts/mfglabsiconset-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/mfglabsiconset-webfont.woff') format('woff'),
+         url('fonts/mfglabsiconset-webfont.ttf') format('truetype'),
+         url('fonts/mfglabsiconset-webfont.svg#mfg_labs_iconsetregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: "Cantarell-Regular";
+	src: url('fonts/Cantarell-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal
+}
+
+#leed-browser,#leed-browser body{
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	font-family:font-family: "Cantarell-Regular",Helvetica,Arial,sans-serif;;
+	font-size:12px;
+}
+
+#browser-button{
+    background-color: #0F0F0F;
+    border-radius: 4px 4px 4px 4px;
+    bottom: 10px;
+    box-shadow: 0 0 4px rgba(15, 15, 15, 0.65);
+    color: #FFFFFF;
+    height: 44px;
+    overflow: hidden;
+    position: fixed;
+    right: 20px;
+    width: 44px;
+    	-moz-transition-duration: 0.35s;
+	-webkit-transition-duration: 0.35s;
+	-o-transition-duration: 0.35s;
+	-ms-transition-duration: 0.35s;
+	transition-duration: 0.35s;
+}
+
+#browser-button:hover{
+  background:#eee;
+  width:250px;
+  min-height: 130px;
+}
+
+#browser-button:hover > #browser-logo{display:none}
+#browser-button:hover > #browser-toolbar{display:block}
+
+#browser-content{
+	border:0px;
+	height:100%;
+	width: 100%
+}
+
+#browser-toolbar{
+	height:100%;
+	margin-top: 25px
+	float:left;
+	  display: none
+}
+
+#browser-toolbar li{
+    background: transparent;
+    border: medium none;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    list-style-type: none;
+    padding: 5px;
+}
+
+#browser-toolbar button.eventRead,#browser-toolbar button.eventFavorite{
+    background: transparent;
+    border: none;
+  
+}
+
+#browser-toolbar li button,#browser-toolbar .button{
+    background:  transparent;
+    border: none;
+    color: #555;
+    margin-bottom: 0px;
+    padding: 5px 5px 3px 5px;
+    text-align: left;
+    text-shadow: 1px 1px #fff;
+    min-width: 100px;
+	cursor:pointer;
+}
+
+#browser-logo{
+	display: block;
+	padding:5px;
+}
+
+#browser-logo span{
+	color:#cecece;
+	font-size:20px;
+	font-weight: bold;
+	font-family: Arial,Verdana;
+}
+
+.logoRead:before,.logoFav:before,.logoClose:before {
+      color: #555555;
+    font-family: 'mfg_labs_iconsetregular';
+    font-size: 20px;
+    text-shadow: 1px 1px #FFFFFF;
+}
+
+.logoRead:before{content:"\f06d"}
+.logoFav:before{content:"\2606"}
+.logoClose:before{content:"\f06E"}
