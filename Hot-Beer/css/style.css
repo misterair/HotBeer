@@ -921,6 +921,7 @@ footer.parter, header.toper {min-width: 100px}
 button.lunonlu {opacity: 1}
 .marque_light {opacity:1}
 }
+.loginButton:hover + .loginBox {display: block}
 
 /* orientation iOS font-size fix */
 @media(orientation:landscape)and(max-device-width:640px) {
