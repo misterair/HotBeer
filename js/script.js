@@ -12,7 +12,7 @@ function toggleFolder(element,folder){
 }
 
 function addFavorite(element,id){
-	$(element).attr('onclick','removeFavorite(this,'+id+');').html('<img class="marque_dark" style="height:36px;width:20px" src="./templates/hot-beer/marque_dark.png">');
+	$(element).attr('onclick','removeFavorite(this,'+id+');').html('<img class="marque_dark" style="height:36px;width:20px" src="./templates/HotBeer/marque_dark.png">');
 	$.ajax({
 				  url: "./action.php?action=addFavorite",
 				  data:{id:id}
@@ -20,7 +20,7 @@ function addFavorite(element,id){
 }
 
 function removeFavorite(element,id){
-	$(element).attr('onclick','addFavorite(this,'+id+');').html('<img class="marque_light" style="height:36px;width:20px" src="./templates/hot-beer/marque_light.png">');
+	$(element).attr('onclick','addFavorite(this,'+id+');').html('<img class="marque_light" style="height:36px;width:20px" src="./templates/HotBeer/marque_light.png">');
 	$.ajax({
 				  url: "./action.php?action=removeFavorite",
 				  data:{id:id}
