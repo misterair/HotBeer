@@ -7,34 +7,7 @@
 
 <!--Début ASIDE-->		
 <aside class="mod w300p ">
-
-			<div class="loginBloc">
-			{if="!$myUser"}
-				<a class="loginButton"></a>				
-				<div class="loginBox">				
-				<form action="action.php?action=login" method="POST">
-						<input type="text" class="miniInput left" name="login" placeholder="Identifiant"/> <input type="password" class="miniInput left" name="password" placeholder="Mot de passe"/> <button class="red">GO!</button>
-				</form>			
-				</div>
-			{else}
-			</div>
-
-			<nav>
-			<ul id="icons">
-				<li><a href="index.php?action=favorites"  title="Favorites" class="icon fav"></a></li>
-				<li><a href="settings.php"  title="Settings" class="icon settings"></a></li>
-				<li><a class="icon synchronyzeButton"  title="Synchronize" onclick="synchronize('{if="$myUser"}{$synchronisationCode}{/if}');"></a></li>
-				<li>{function="Plugin::callHook("navigate_post_link", array(&$myUser))"}</li>
-			</ul>
-			</nav>
-					<button class="deco right" onclick="window.location='action.php?action=logout'">
-						D&eacute;connexion
-					</button>
-				{/if}
-				<div class="clear"></div>
-			
-			<!--Fin Menu-->
-<h1 class="logo" id="title"><a href="./index.php"><img src="logo.png"  style="height: 44px;" alt="logo"></a></h1>
+	<h1 class="logo" id="title"><a href="./index.php"><img src="logo.png"  style="height: 64px;" alt="logo"></a></h1>
 
 
 		{function="Plugin::callHook("menu_pre_folder_menu", array(&$myUser))"}
@@ -93,8 +66,34 @@
 			{/loop}
 		</ul>
 
-		<button class="red allread" onclick="if(confirm('Tout marquer comme lu pour tous les flux?'))window.location='action.php?action=readAll'">Tout marquer comme lu</button>
+		<button class="red allread icon" onclick="if(confirm('Tout marquer comme lu pour tous les flux?'))window.location='action.php?action=readAll'">Tout marquer comme lu</button>
 	{function="Plugin::callHook("menu_post_folder_menu", array(&$myUser))"}
+
+			<div class="loginBloc">
+			{if="!$myUser"}
+				<a class="loginButton">Connexion</a>				
+				<div class="loginBox">				
+				<form action="action.php?action=login" method="POST">
+						<input type="text" class="miniInput left" name="login" placeholder="Identifiant"/> <input type="password" class="miniInput left" name="password" placeholder="Mot de passe"/> <button class="red">GO!</button>
+				</form>			
+				</div>
+			{else}
+			</div>
+
+			<nav>
+			<ul id="icons">
+				<li><a class="icon synchronyzeButton"  title="Synchroniser" onclick="synchronize('{if="$myUser"}{$synchronisationCode}{/if}');">Synchroniser</a></li>
+				<li><a href="index.php?action=favorites"  title="Favoris" class="icon fav">Favoris</a></li>
+				<li><a href="settings.php"  title="R&eacute;glages" class="icon settings">R&eacute;glages</a></li>
+				<li>{function="Plugin::callHook("navigate_post_link", array(&$myUser))"}</li>
+				<li><a class="deco icon" onclick="window.location='action.php?action=logout'">D&eacute;connexion</a></li>
+			</ul>
+			</nav>
+
+				{/if}
+				<div class="clear"></div>
+			
+			<!--Fin Menu-->
 	</aside>
 <!-- FIN ASIDE -->	
 	
