@@ -1,0 +1,242 @@
+
+{include="header"}
+{if="($configurationManager->get('articleDisplayAnonymous')=='1') || ($myUser!=false)"}
+<div id="wrap">
+
+<div class="content mod item">
+
+<!--Début ASIDE-->		
+<aside class="mod w300p ">
+
+			<div class="loginBloc">
+			{if="!$myUser"}
+				<a class="loginButton"></a>				
+				<div class="loginBox">				
+				<form action="action.php?action=login" method="POST">
+						<input type="text" class="miniInput left" name="login" placeholder="Identifiant"/> <input type="password" class="miniInput left" name="password" placeholder="Mot de passe"/> <button class="red">GO!</button>
+				</form>			
+				</div>
+			{else}
+			</div>
+
+			<nav>
+			<ul id="icons">
+				<li><a href="index.php?action=favorites"  title="Favorites" class="icon fav"></a></li>
+				<li><a href="settings.php"  title="Settings" class="icon settings"></a></li>
+				<li><a class="icon synchronyzeButton"  title="Synchronize" onclick="synchronize('{if="$myUser"}{$synchronisationCode}{/if}');"></a></li>
+				<li>{function="Plugin::callHook("navigate_post_link", array(&$myUser))"}</li>
+			</ul>
+			</nav>
+					<button class="deco right" onclick="window.location='action.php?action=logout'">
+						D&eacute;connexion
+					</button>
+				{/if}
+				<div class="clear"></div>
+			
+			<!--Fin Menu-->
+<h1 class="logo" id="title"><a href="./index.php"><img src="logo.png"  style="height: 44px;" alt="logo"></a></h1>
+
+
+		{function="Plugin::callHook("menu_pre_folder_menu", array(&$myUser))"}
+		{function="Plugin::callHook("menu_post_header_options", array(&$myUser))"}
+		<ul class="flux">
+			<!--Pour chaque dossier-->
+				{loop="folders"}
+					{$feeds=""}
+					<!--on récupere tous les flux lié au dossier-->
+				  	{if="isset($allFeedsPerFolder[$value->getId()])"}
+				  		{$feeds=$allFeedsPerFolder[$value->getId()]}
+				  	{/if}
+				  	{if="isset($allEvents[$value->getId()])"}
+				  		{$unreadEventsForFolder=$allEvents[$value->getId()]}
+				  	{/if}
+			<!-- DOSSIER -->
+			<li class="flux">
+			{function="Plugin::callHook("menu_pre_folder_link", array(&$value))"}
+				<a class="readFolder" title="Plier/Deplier le dossier" alt="Plier/Deplier le dossier" onclick="toggleFolder(this,{$value->getId()});" >
+					{if="!$value->getIsopen()"}+{else}-{/if}
+				</a>
+				
+				<a alt="Lire les evenements de ce dossier" title="Lire les évenements de ce dossier" href="index.php?action=selectedFolder&folder={$value->getId()}">
+					{$value->getName()}
+				</a>
+
+				{if="$unreadEventsForFolder!=0"}
+				<a class="fade" alt="marquer comme lu le(s) {$unreadEventsForFolder} evenement(s) non lu(s) de ce dossier" title="marquer comme lu le(s) {$unreadEventsForFolder} evenement(s) non lu(s) de ce dossier" onclick="if(confirm('Tout marquer comme lu pour ce dossier?'))window.location='action.php?action=readFolder&folder={$value->getId()}';">
+					({$unreadEventsForFolder})
+				</a>
+				{/if}
+				{function="Plugin::callHook("menu_post_folder_link", array(&$value))"}
+				<!-- FLUX DU DOSSIER -->
+				<ul {if="!$value->getIsopen()"}style="display:none;"{/if}>
+					 
+						{if="count($feeds)!=0"}
+							{loop="feeds"}
+								<li> 
+								{function="Plugin::callHook("menu_pre_feed_link", array(&$value))"}		
+									
+									<a href="index.php?action=selectedFeed&feed={$value2['id']}" alt="{$value2['url']}" title="{$value2['url']}">{$value2['name']} </a>
+									{if="isset($unread[$value2['id']])"}  
+									<button class="fade" onclick="if(confirm('Tout marquer comme lu pour ce flux?'))window.location='action.php?action=readAll&feed={$value2['id']}';">
+										<span class="fade" alt="marquer comme lu" title="marquer comme lu">({$unread[$value2['id']]})</span>
+									</button>
+									{function="Plugin::callHook("menu_post_feed_link", array(&$value))"}
+									{/if}
+								</li>
+							{/loop}
+						{/if}
+				</ul>
+				<!-- FIN FLUX DU DOSSIER -->
+			</li>
+			<!-- FIN DOSSIER -->
+			{$unreadEventsForFolder=0}
+			{/loop}
+		</ul>
+
+		<button class="red allread" onclick="if(confirm('Tout marquer comme lu pour tous les flux?'))window.location='action.php?action=readAll'">Tout marquer comme lu</button>
+	{function="Plugin::callHook("menu_post_folder_menu", array(&$myUser))"}
+	</aside>
+<!-- FIN ASIDE -->	
+	
+	<!--          -->
+	<!-- ARTICLES -->
+	<!--          -->
+	<article>
+
+	<div class="articleHead">
+{if="$action=='selectedFeed'"}
+<!-- AFFICHAGE DES EVENEMENTS D'UN FLUX EN PARTICULIER -->
+<h2><a target="_blank" href="{$currentFeed->getWebSite()}">{$currentFeed->getName()}</a></h2>
+<h3><i>{$currentFeed->getDescription()}</i></h3>
+<h4>
+<a href="index.php?action=selectedFeed&amp;feed={$_['feed']}&amp;page={$page}&amp;order=unread">Non lu</a> /
+<a href="index.php?action=selectedFeed&amp;feed={$_['feed']}&amp;page={$page}&amp;order=older">Plus vieux</a>
+</h4>
+{/if}
+
+{if="$action=='selectedFolder'"}
+<!-- AFFICHAGE DES EVENEMENTS D'UN DOSSIER EN PARTICULIER -->	
+<h2>{$currentFolder->getName()}<h2>
+{/if}
+
+{if="$action=='favorites'"}
+<!-- AFFICHAGE DES EVENEMENTS FAVORIS -->	
+<div class="clear"></div>
+<h3>{$numberOfItem} articles favoris<h3>
+{/if}
+
+
+{if="($action=='unreadEvents') || ($action=='')"}
+<!-- AFFICHAGE DES EVENEMENTS NON LU (COMPORTEMENT PAR DEFAUT) -->	
+<div class="clear"></div>
+<h3>{$numberOfItem} éléments non lus</h3>
+{/if}
+
+</div>
+
+
+		{loop="$events"}
+			{$plainDescription=strip_tags($value->getDescription())}	
+			<!-- CORPS ARTICLE -->
+			 
+			<section tabindex="1" id="{$value->getId()}" class="article {if="!$value->getUnread()"} eventRead {/if} {$hightlighted%2==0?'eventHightLighted':''}" >
+				<a class="anchor" name="{$value->getId()}"></a>
+				<!-- TITRE -->
+
+				<h2 class="articleTitle">
+				{function="Plugin::callHook("event_pre_title", array(&$value))"}
+					<a onclick="readThis(this,{$value->getId()},'title');" target="_blank" href="{$value->getLink()}" alt="{$plainDescription}" title="{$plainDescription}">{$value->getTitle()}</a> 
+				{function="Plugin::callHook("event_post_title", array(&$value))"}
+				</h2>
+
+                               	<div class="buttons-bar">
+					<button class="right lunonlu" onclick="readThis(this,{$value->getId()}{$action=='unreadEvents' || $action==''?',true':''});"></button>
+					{if="$value->getFavorite()!=1"}  <a class="favorite" onclick="addFavorite(this,{$value->getId()});" ><img class="marque_light" style="height:36px;width:20px" src="marque_light.png"></a> 
+					{else}
+					 <a class="favorite" onclick="removeFavorite(this,{$value->getId()});" ><img class="marque_dark" src="marque_dark.png" style="height:36px;width:20px"></a> 
+					 {/if}
+				</div>
+
+				<!-- DETAILS + OPTIONS -->
+                                <ul class="article_complet">
+				<h3 class="articleDetails">
+					{function="Plugin::callHook("event_pre_top_options", array(&$value))"}
+					{if="$articleDisplayLink"}
+						<!--<img src="http://www.google.com/s2/favicons?domain="/> Favicon-->
+						<a href="{$value->getLink()}" target="_blank">{$allFeeds['idMap'][$value->getFeed()]['name']}</a>
+					{/if}
+					{if="$articleDisplayAuthor"}
+					 par {$value->getCreator()}
+					{/if}
+
+					{if="$articleDisplayDate"} 
+						{$value->getPubdateWithInstant($time)} 
+					{/if}
+					{function="Plugin::callHook("event_post_top_options", array(&$value))"}
+				</h3>
+
+				<!-- CONTENU/DESCRIPTION -->
+				{if="$articleDisplayContent"}
+				<div class="articleContent">
+					{if="$articleView=='partial'"}
+						{$value->getDescription()}
+					{else}
+						{$value->getContent()}
+					{/if}
+				</div> 
+				{/if}
+				
+				{if="$articleView!='partial'"}
+				<!-- RAPPEL DETAILS + OPTIONS POUR LES ARTICLES AFFICHES EN ENTIER -->
+				<h3 class="articleDetails">
+					{function="Plugin::callHook("event_pre_bottom_options", array(&$value))"}
+					 <div class="clear"></div>
+					{function="Plugin::callHook("event_post_bottom_options", array(&$value))"}
+				</h3>
+				{/if}
+				
+                                </ul><div class="article_deg"></div>
+                             
+			</section>
+			{$hightlighted=$hightlighted+1}
+		{/loop}
+
+		<!-- PIED DE PAGE DES ARTICLES -->
+
+		{if="$pages!=0"}
+			<p>Page {$page}/{$pages} : 
+
+				{if="$previousPages>0"}
+				<a href="index.php?action={$action}{if="$action=='selectedFeed'"}&feed={$currentFeed->getId()}{/if}{if="$action=='selectedFolder'"}&folder={$currentFolder->getId()}{/if}&page={$previousPages}"><<</a>
+				{/if}
+				
+				{loop="pagesArray"}
+
+					{if="$page!=$value"}
+					<a href="index.php?action={$action}{if="$action=='selectedFeed'"}&feed={$currentFeed->getId()}{/if}{if="$action=='selectedFolder'"}&folder={$currentFolder->getId()}{/if}&page={$value}">{$value}</a> 
+					{else}
+					{$value}
+					{/if}
+					|
+				{/loop}
+
+				{if="$nextPages>0"}
+				<a href="index.php?action={$action}{if="$action=='selectedFeed'"}&feed={$currentFeed->getId()}{/if}{if="$action=='selectedFolder'"}&folder={$currentFolder->getId()}{/if}&page={$nextPages}">>></a>
+				{/if}
+			</p> 
+		{/if}
+
+	</article>
+</div> <!-- #content -->
+</div> <!-- #wrap -->
+
+{else}
+	<div id="wrap">
+		<article style="margin:70px 0px 0px 25px;">
+				<h3>Vous devez &ecirc;tre connect&eacute; pour consulter vos flux </h3>
+				<p>Si vous &ecirc;tes administrateur, vous pouvez r&eacute;gler les droits de visualisation dans la partie administration.</p>
+		</article>
+	</div>
+{/if}
+
+{include="footer"}
