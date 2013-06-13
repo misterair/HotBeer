@@ -82,11 +82,11 @@
 
 			<nav>
 			<ul id="icons">
+				<li>{function="Plugin::callHook("navigate_post_link", array(&$myUser))"}</li>
 				<li><a class="icon synchronyzeButton"  title="Synchroniser" onclick="synchronize('{if="$myUser"}{$synchronisationCode}{/if}');">Synchroniser</a></li>
 				<li><a href="index.php?action=favorites"  title="Favoris" class="icon fav">Favoris</a></li>
 				<li><a href="settings.php"  title="R&eacute;glages" class="icon settings">R&eacute;glages</a></li>
 				<li><a class="propos icon" href="about.php">&acirc; Propos</a></li>
-				<li>{function="Plugin::callHook("navigate_post_link", array(&$myUser))"}</li>
 				<li><a class="deco icon" onclick="window.location='action.php?action=logout'">D&eacute;connexion</a></li>
 			</ul>
 			</nav>
@@ -121,18 +121,18 @@
 
 {if="$action=='favorites'"}
 <style>
-  section.eventRead {
+  section.eventRead ul,section.eventRead h2{
     opacity: 1!important;
   }
 </style>
 <!-- AFFICHAGE DES EVENEMENTS FAVORIS -->	
-<h3>{$numberOfItem} articles favoris<h3>
+<h3 style="margin-bottom:6px;margin-top:0px;text-align:center">{$numberOfItem} favoris</h3>
 {/if}
 
 
 {if="($action=='unreadEvents') || ($action=='')"}
 <!-- AFFICHAGE DES EVENEMENTS NON LU (COMPORTEMENT PAR DEFAUT) -->	
-<h3>{$numberOfItem} éléments non lus</h3>
+<h3 style="margin-bottom:6px;margin-top:0px;text-align:center">{$numberOfItem} articles non lus</h3>
 {/if}
 
 </div>
