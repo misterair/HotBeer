@@ -150,11 +150,11 @@ h1.logo {
 }
 
 .articleContent a:nth-child(1)> img {
-    left: 35px;
-    max-height: 150px;
-    max-width: 165px;
+    left: 26px;
+    max-height: 300px;
+    max-width: 206px;
     position: absolute;
-    top: 40px;
+    top: 52px;
 }
 
         .article_complet {
@@ -431,8 +431,8 @@ h1.logo {
 	}
 	a.goTopButton { font-size: 3em }
 	button.lunonlu {
-	float: right;
-	margin-top: 4px;
+	float: left;
+	margin-top: 12px;
 	color: #ccc;
 	background:transparent;
 	font-size:20px;
@@ -463,14 +463,10 @@ h1.logo {
 	article {
 	display: block;
 	position: relative;
-	padding: 5px 0;
-	background: #EEE;
-    	margin-left:0px;
+	padding: 5px 15px 5px 5px;
+	background: transparent;
 	min-height: 600px;
-	border: none;
-	border-right: solid 1px #ccc;
 	color: #0F0F0F;
-	box-shadow:-4px 0 4px #000;
 	margin-left: 240px
 	}
 	section {
@@ -483,8 +479,6 @@ h1.logo {
           }
 
 	.articleHead {
-    border-bottom: 1px solid #B1B1B1;
-    box-shadow: 0 1px #FFFFFF;
     float: left;
     min-height: 14px;
     position: relative;
@@ -497,21 +491,21 @@ h1.logo {
 
 	}
 .articleHead h2 a {
-    color: #555555;
+    color: #fff;
     font-size: 1.2em;
     font-weight: bold;
     margin: -2px 0 10px;
-    text-shadow: 1px 1px #FFFFFF;
+    text-shadow: 1px 1px #0F0F0F;
 }
 .articleHead h3  {
-    color: #555555;
+    color: #fff;
     font-size: 0.96em;
     font-weight: lighter;
     line-height: 20px;
     margin-left: 12px;
     margin-right: 12px;
     text-align: justify;
-    text-shadow: 1px 1px #FFFFFF;
+    text-shadow: 1px 1px #0F0F0F;
 }
 .articleHead h4 {
     position: absolute;
@@ -539,24 +533,25 @@ h1.logo {
 .marque_dark {opacity:1}
 
 	section.article {
-        padding: 10px 35px 10px 30px;
-        margin-bottom: 1px;
-        background: transparent;
-        color: #0f0f0f;
-	border-bottom: solid #B1B1B1 1px;
-	border-left: solid #ccc 1px;
-	box-shadow: 0 1px #FFFFFF,  1px 0 1px #FFFFFF;
-	text-align: justify;
-	line-height: 22px;
-        font-size: 0.96em;
+    background: none repeat scroll 0 0 #EEEEEE;
+    box-shadow: 0 0 4px #0F0F0F;
+    color: #0F0F0F;
+    font-size: 0.96em;
+    line-height: 22px;
+    margin-bottom: 20px;
+    padding: 10px 35px 10px 30px;
+    text-align: justify;
 	}
   .articleDetails {
-    background: #E9E9E9;
+    background: none repeat scroll 0 0 #E9E9E9;
+    border-top: 1px solid #CCCCCC;
     bottom: 0;
-    color: #555555;
+    box-shadow: 0 1px #FFFFFF inset;
+    color: #0F0F0F;
     font-size: 0.9em;
-    height: 24px;
+    height: 26px;
     left: 0;
+    padding: 2px;
     position: absolute;
     text-shadow: 1px 1px #FFFFFF;
     width: 100%;
@@ -595,12 +590,12 @@ h1.logo {
         display: block;
         }
 	section>h2 {
-	color: #0F0F0F;
-	text-shadow: 1px 1px #fff;
-	margin: 6px 0 24px;
-	padding: 0px;
-	text-align: center;
-	font-family: "Cantarell-Regular",Helvetica,Arial,sans-serif;
+    color: #0F0F0F;
+    font-family: "Cantarell-Regular",Helvetica,Arial,sans-serif;
+    margin: 6px 0 24px 2px;
+    padding: 0;
+    text-align: left;
+    text-shadow: 1px 1px #FFFFFF;
 	}
 	section>h2 a,section>h2 a:visited,section>h2 .link,section>h2 .pointer{
 	  color: #333;
@@ -681,8 +676,8 @@ h1.logo {
 	margin: 6px 20px 0 0 
 	}
 	.favorite {
-	float: left;
-	margin-left: 5px;
+	float: right;
+	margin-right: 5px;
 	background-color: transparent;
 	border: none;
 	font-size: 10px;
@@ -691,7 +686,7 @@ h1.logo {
 	line-height: 30px;
 	outline: 0px none;
 	cursor: pointer;
-        width: 44px;
+        width: 32px;
         text-align: center;
 	}
 
