@@ -4,7 +4,7 @@ function toggleFolder(element,folder){
 	open = 0;
 	if(feedBloc.css('display')=='none') open = 1;
 	feedBloc.slideToggle(200);
-	$(element).html((!open?'+':'-'));
+	$(element).html((!open?'':''));
 	$.ajax({
 				  url: "./action.php?action=changeFolderState",
 				  data:{id:folder,isopen:open}
@@ -123,7 +123,7 @@ data:{id:id}
 function synchronize(code){
 	if(code!=''){
 	$('article').html('<section>'+
-	'<iframe class="importFrame" src="action.php?action=synchronize&format=html&code='+code+'" name="idFrameSynchro" id="idFrameSynchro" width="100%" height="300" ></iframe>'+
+	'<iframe class="importFrame" src="action.php?action=synchronize&format=html&code='+code+'" name="idFrameSynchro" id="idFrameSynchro"></iframe>'+
 	'</section>');
 	}else{
 		alert('Vous devez être connecté pour synchroniser vos flux');

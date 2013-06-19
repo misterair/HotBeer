@@ -60,9 +60,8 @@ a {
    outline: 0;
 }
 h1.logo {
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 -1px 1px #000000;
-    margin: -13px auto;
+
+    margin: 1px auto;
     overflow: hidden;
     padding-top: 10px;
     position: relative;
@@ -268,8 +267,6 @@ h1.logo {
 /* ==Login */
 /* ----------------------------- */
 .loginBloc {
-    border-top: 1px solid #000000;
-    box-shadow: 0 -1px rgba(255, 255, 255, 0.15);
     float: left;
     margin: 0;
     position: relative;
@@ -303,10 +300,8 @@ h1.logo {
     top: 0;
     width: 234px;
     padding: 12px 34px ;
-    border-radius: 4px;
-    border: solid 1px rgba(255, 255, 255, 0.25); 
     background: #0F0F0F;
-    box-shadow: 0 0 4px #000;
+    box-shadow: 0 0 2px #0f0f0f;
     z-index: 999;
 	-moz-transition-duration: 0.35s;
 	-webkit-transition-duration: 0.35s;
@@ -335,12 +330,19 @@ h1.logo {
 /* ----------------------------- */
 
 	.flux a, .flux a:visited{
-	color: #fff;  
+	color: #fff; 
+	opacity:0.8;
+	-moz-transition-duration: 0.15s;
+	-webkit-transition-duration: 0.15s;
+	-o-transition-duration: 0.15s;
+	-ms-transition-duration: 0.15s;
+	transition-duration: 0.15s;
 	}
+	.flux a:hover {opacity:1}
+
         aside {
 	display: block;
 	background: transparent;
-        border-top: 2px solid #FC4C03;
 	font-size: 1.1em;
 	margin: 0;
 	float: left;
@@ -368,34 +370,28 @@ h1.logo {
     border: medium none;
     color: #0F0F0F;
     float: left;
-    font-size: 0.90em;
-    margin: 5px 0 0 0 ;
+    font-size: 0.95em;
+    margin: 5px 0 0 4px;
     overflow: hidden;
     position: relative;
     text-align: left;
-    width: 100%;
     text-shadow: 1px 1px #000;
 	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	}
 	li.flux>ul {
-	padding-top: 10px;
-	padding-bottom: 2px;
-	background-color: transparent;
-	width: 100%;
-	text-indent: none;
-	font-size: 0.94em;
-	display: inline-block;
-	text-align: left;
-	margin: 4px 0 4px 16px
+    background-color: transparent;
+    display: inline-block;
+    font-size: 0.94em;
+    line-height: 26px;
+    margin: 0 0 12px 5px;
+    padding-bottom: 2px;
+    padding-top: 10px;
+    text-align: left;
 	}
 	li.flux>ul a {
 	white-space: normal;
 	max-width: 200px;
-	}
-	button.allread {
-	width: 200px;
-	margin: 20px;
 	}
 	.fade, button.fade {
 	color: #666666;
@@ -409,17 +405,22 @@ h1.logo {
 	display: block;
 	width: 22px;
 	height: 22px;
-	line-height: 22px; /*centrage vertical du texte*/
+	line-height: 22px;
 	margin-right: 4px;
-	color: #e5e5e5;
+	color: #fff;
 	float: left;
 	text-align: center;
 	cursor: pointer;
-	font-size: 2em;
-	}
+	font-size: 1.4em;
+        font-family: 'mfg_labs_iconsetregular';
+	opacity: O.8;
+	-moz-transition-duration: 0.15s;
+	-webkit-transition-duration: 0.15s;
+	-o-transition-duration: 0.15s;
+	-ms-transition-duration: 0.15s;
+asid	}
 	.readFolder:hover, .readFolder:active {
-	color: #666;
-	background: #e5e5e5;
+	opacity;1
 	}
 
 /* ----------------------------- */
@@ -431,13 +432,14 @@ h1.logo {
 	}
 	a.goTopButton { font-size: 3em }
 	button.lunonlu {
-	float: left;
-	margin-top: 12px;
-	color: #ccc;
-	background:transparent;
-	font-size:20px;
-	text-shadow: 1px 1px #fff;
-	opacity:0;
+    background: none repeat scroll 0 0 transparent;
+    color: #CCCCCC;
+    font-size: 20px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    text-shadow: 1px 1px #FFFFFF;
+    top: 12px;
 	-moz-transition-duration: 0.15s;
 	-webkit-transition-duration: 0.15s;
 	-o-transition-duration: 0.15s;
@@ -454,7 +456,7 @@ h1.logo {
     	width: 100%;
 	}
 	.content {
-    background:  rgba(15,15,15,0.45);
+    background: transparent;
     display: block;
     float: left;
     position: relative;
@@ -483,11 +485,7 @@ h1.logo {
     min-height: 14px;
     position: relative;
     width: 100%;
-		background: -moz-linear-gradient(270deg , rgba(233,233,233,0) 0%,  rgba(233,233,233,0) 64%,rgba(233,233,233,1) 80%, rgba(233,233,233,1) 100%) repeat scroll 0 0 transparent;
-		background: -webkit-linear-gradient(270deg , rgba(233,233,233,0) 0%,  rgba(233,233,233,0) 64%,rgba(233,233,233,1) 80%, rgba(233,233,233,1) 100%) repeat scroll 0 0 transparent;
-		background-image: -o-linear-gradient(270deg , rgba(233,233,233,0) 0%,  rgba(233,233,233,0) 64%,rgba(233,233,233,1) 80%, rgba(233,233,233,1) 100%) repeat scroll 0 0 transparent;
-		background: -ms-linear-gradient(270deg , rgba(233,233,233,0) 0%,  rgba(233,233,233,0) 64%,rgba(233,233,233,1) 80%, rgba(233,233,233,1) 100%) repeat scroll 0 0 transparent;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(233,233,233,0)), color-stop(64%, rgba(233,233,233,0)), color-stop(80%, rgba(233,233,233,1)), color-stop(100%, rgba(233,233,233,1)));
+    background: transparent
 
 	}
 .articleHead h2 a {
@@ -676,18 +674,19 @@ h1.logo {
 	margin: 6px 20px 0 0 
 	}
 	.favorite {
-	float: right;
-	margin-right: 5px;
-	background-color: transparent;
-	border: none;
-	font-size: 10px;
-	font-weight: bold;
-	color: #666;
-	line-height: 30px;
-	outline: 0px none;
-	cursor: pointer;
-        width: 32px;
-        text-align: center;
+    background-color: transparent;
+    border: medium none;
+    color: #666666;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 30px;
+    outline: 0 none;
+    position: absolute;
+    right: 5px;
+    text-align: center;
+    top: 0;
+    width: 32px;
 	}
 
 	.readUnreadButton{
@@ -769,9 +768,7 @@ section#manageBloc {
 nav li{
 list-style:none; display:block}
 #icons {
-    position: relative;;
-    border-top: 1px solid #000000;
-    box-shadow: 0 1px rgba(255, 255, 255, 0.15)inset;
+    position: relative;
     float: left;
     margin-top: 0;
     text-align: left;
@@ -788,8 +785,6 @@ list-style:none; display:block}
     position: relative;
     text-shadow: 1px 1px #000000;
     width: 240px;
-    border-bottom: 1px solid #000000;
-    box-shadow: 0 1px rgba(255, 255, 255, 0.15);
 	-moz-transition-duration: 0.15s;
 	-webkit-transition-duration: 0.15s;
 	-o-transition-duration: 0.15s;
@@ -801,7 +796,13 @@ list-style:none; display:block}
 .settings:before {content:"\9881"}
 .synchronyzeButton:before {content:"\f025"}
 .propos:before {content:"\f064"}
-.propos:before, .fav:before, .settings:before, .synchronyzeButton:before{
+.allread {
+    color:#FC4C03!important;
+    margin: 4px;
+    text-align: left;
+}
+.allread:before {content: "\2757";color:#FC4C03!important}
+.propos:before, .fav:before, .settings:before, .synchronyzeButton:before, .allread:before{
     color: #eee;
     line-height: 16px;
     font-size: 1.3em;

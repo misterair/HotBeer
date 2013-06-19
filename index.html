@@ -27,7 +27,7 @@
 			<li class="flux">
 			{function="Plugin::callHook("menu_pre_folder_link", array(&$value))"}
 				<a class="readFolder" title="Plier/Deplier le dossier" alt="Plier/Deplier le dossier" onclick="toggleFolder(this,{$value->getId()});" >
-					{if="!$value->getIsopen()"}+{else}-{/if}
+					{if="!$value->getIsopen()"}{else}{/if}
 				</a>
 				
 				<a alt="Lire les evenements de ce dossier" title="Lire les évenements de ce dossier" href="index.php?action=selectedFolder&folder={$value->getId()}">
@@ -66,7 +66,7 @@
 			{/loop}
 		</ul>
 
-		<button class="red allread icon" onclick="if(confirm('Tout marquer comme lu pour tous les flux?'))window.location='action.php?action=readAll'">Tout marquer comme lu</button>
+		<a class="allread icon" onclick="if(confirm('Tout marquer comme lu pour tous les flux?'))window.location='action.php?action=readAll'">Tout marquer comme lu</a>
 	{function="Plugin::callHook("menu_post_folder_menu", array(&$myUser))"}
 
 			<div class="loginBloc">
@@ -145,20 +145,18 @@
 			<section tabindex="1" id="{$value->getId()}" class="article {if="!$value->getUnread()"} eventRead {/if} {$hightlighted%2==0?'eventHightLighted':''}" >
 				<a class="anchor" name="{$value->getId()}"></a>
 				<!-- TITRE -->
-
-				<h2 class="articleTitle">
-				{function="Plugin::callHook("event_pre_title", array(&$value))"}
-					<a onclick="readThis(this,{$value->getId()},'title');" target="_blank" href="{$value->getLink()}" alt="{$plainDescription}" title="{$plainDescription}">{$value->getTitle()}</a> 
-				{function="Plugin::callHook("event_post_title", array(&$value))"}
-				</h2>
-
-                               	<div class="buttons-bar">
+                               	
 					<button class="right lunonlu" onclick="readThis(this,{$value->getId()}{$action=='unreadEvents' || $action==''?',true':''});"></button>
 					{if="$value->getFavorite()!=1"}  <a class="favorite" onclick="addFavorite(this,{$value->getId()});" ><img class="marque_light" style="height:36px;width:20px" src="marque_light.png"></a> 
 					{else}
 					 <a class="favorite" onclick="removeFavorite(this,{$value->getId()});" ><img class="marque_dark" src="marque_dark.png" style="height:36px;width:20px"></a> 
 					 {/if}
-				</div>
+				
+				<h2 class="articleTitle">
+				{function="Plugin::callHook("event_pre_title", array(&$value))"}
+					<a onclick="readThis(this,{$value->getId()},'title');" target="_blank" href="{$value->getLink()}" alt="{$plainDescription}" title="{$plainDescription}">{$value->getTitle()}</a> 
+				{function="Plugin::callHook("event_post_title", array(&$value))"}
+				</h2>
 
 				<!-- DETAILS + OPTIONS -->
                                 <ul class="article_complet">
@@ -175,14 +173,6 @@
 				</div> 
 				{/if}
 				
-				{if="$articleView!='partial'"}
-				<!-- RAPPEL DETAILS + OPTIONS POUR LES ARTICLES AFFICHES EN ENTIER -->
-				<h3 class="articleDetails">
-					{function="Plugin::callHook("event_pre_bottom_options", array(&$value))"}
-					 <div class="clear"></div>
-					{function="Plugin::callHook("event_post_bottom_options", array(&$value))"}
-				</h3>
-				{/if}
 				
                                 </ul><div class="article_deg"></div>
                              
