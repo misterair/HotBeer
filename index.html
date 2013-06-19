@@ -145,18 +145,18 @@
 			<section tabindex="1" id="{$value->getId()}" class="article {if="!$value->getUnread()"} eventRead {/if} {$hightlighted%2==0?'eventHightLighted':''}" >
 				<a class="anchor" name="{$value->getId()}"></a>
 				<!-- TITRE -->
-                               	
+                         	<h2 class="articleTitle">
+				{function="Plugin::callHook("event_pre_title", array(&$value))"}
+					<a onclick="readThis(this,{$value->getId()},'title');" target="_blank" href="{$value->getLink()}" alt="{$plainDescription}" title="{$plainDescription}">{$value->getTitle()}</a> 
+				{function="Plugin::callHook("event_post_title", array(&$value))"}
+				</h2>
+				<div>
 					<button class="right lunonlu" onclick="readThis(this,{$value->getId()}{$action=='unreadEvents' || $action==''?',true':''});"></button>
 					{if="$value->getFavorite()!=1"}  <a class="favorite" onclick="addFavorite(this,{$value->getId()});" ><img class="marque_light" style="height:36px;width:20px" src="marque_light.png"></a> 
 					{else}
 					 <a class="favorite" onclick="removeFavorite(this,{$value->getId()});" ><img class="marque_dark" src="marque_dark.png" style="height:36px;width:20px"></a> 
 					 {/if}
-				
-				<h2 class="articleTitle">
-				{function="Plugin::callHook("event_pre_title", array(&$value))"}
-					<a onclick="readThis(this,{$value->getId()},'title');" target="_blank" href="{$value->getLink()}" alt="{$plainDescription}" title="{$plainDescription}">{$value->getTitle()}</a> 
-				{function="Plugin::callHook("event_post_title", array(&$value))"}
-				</h2>
+				</div>
 
 				<!-- DETAILS + OPTIONS -->
                                 <ul class="article_complet">
