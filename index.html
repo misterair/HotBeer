@@ -7,7 +7,10 @@
 
 <!--Début ASIDE-->		
 <aside class="mod w300p ">
-	<h1 class="logo" id="title"><a href="./index.php"><img src="logo.png"  style="height: 64px;" alt="logo"></a></h1>
+	<h1 class="logo css3-shadow" id="title">
+		<a href="./index.php"><img src="logo.png"  style="height: 64px;" alt="logo"></a>
+		<p class="line-deg"></p>
+	</h1>
 
 
 		{function="Plugin::callHook("menu_pre_folder_menu", array(&$myUser))"}
@@ -174,9 +177,10 @@
 				{/if}
 				
 				
-                                </ul><div class="article_deg"></div>
+                                </ul>
                              
-				<div class="articleDetails">
+				<div class="articleDetails css2-shadow">
+				    <div class="articleDetailFond">	
 					{function="Plugin::callHook("event_pre_top_options", array(&$value))"}
 					{if="$articleDisplayLink"}
 						<img class="articleFavicon" src="http://www.google.com/s2/favicons?domain="/>
@@ -190,6 +194,7 @@
 						{$value->getPubdateWithInstant($time)} 
 					{/if}
 					{function="Plugin::callHook("event_post_top_options", array(&$value))"}
+				    </div>
 				</div>
 
 			</section>

@@ -122,9 +122,9 @@ data:{id:id}
 //synchronisation manuelle lancée depuis le boutton du menu
 function synchronize(code){
 	if(code!=''){
-	$('article').html('<section>'+
-	'<iframe class="importFrame" src="action.php?action=synchronize&format=html&code='+code+'" name="idFrameSynchro" id="idFrameSynchro"></iframe>'+
-	'</section>');
+	$('article').html(
+	'<iframe  class="importFrame" src="action.php?action=synchronize&format=html&code='+code+'" name="idFrameSynchro" id="idFrameSynchro"></iframe>'
+	);
 	}else{
 		alert('Vous devez être connecté pour synchroniser vos flux');
 	}
