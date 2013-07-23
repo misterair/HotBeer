@@ -9,7 +9,7 @@
 <aside class="mod w300p ">
 	<h1 class="logo css3-shadow" id="title">
 		<a href="./index.php"><img src="logo.png"  style="height: 64px;" alt="logo"></a>
-		<p class="line-deg"></p>
+		<div class="line-deg"></div>
 	</h1>
 
 
@@ -106,7 +106,7 @@
 	<!--          -->
 	<article>
 
-	<div class="articleHead">
+	<div class="articleHead css3-shadow">
 {if="$action=='selectedFeed'"}
 <!-- AFFICHAGE DES EVENEMENTS D'UN FLUX EN PARTICULIER -->
 <h2><a target="_blank" href="{$currentFeed->getWebSite()}">{$currentFeed->getName()}</a></h2>
@@ -124,20 +124,23 @@
 
 {if="$action=='favorites'"}
 <style>
-  section.eventRead ul,section.eventRead h2{
+  section.eventRead {
+    background: #eee!important;
+  }
+  section.eventRead ul,  section.eventRead h2{
     opacity: 1!important;
   }
 </style>
 <!-- AFFICHAGE DES EVENEMENTS FAVORIS -->	
-<h3 style="margin-bottom:6px;margin-top:0px;text-align:center">{$numberOfItem} favoris</h3>
+<h3  style="margin-bottom: 6px; margin-top: 0px; text-align: left; line-height: 90px; color: rgb(59, 59, 59); font-size: 90px; height: 80px; overflow: hidden;">{$numberOfItem} favoris</h3>
 {/if}
 
 
 {if="($action=='unreadEvents') || ($action=='')"}
 <!-- AFFICHAGE DES EVENEMENTS NON LU (COMPORTEMENT PAR DEFAUT) -->	
-<h3 style="margin-bottom:6px;margin-top:0px;text-align:center">{$numberOfItem} articles non lus</h3>
+<h3 style="margin-bottom: 6px; margin-top: 0px; text-align: left; line-height: 90px; color: rgb(59, 59, 59); font-size: 90px; height: 80px; overflow: hidden;">{$numberOfItem} news</h3>
 {/if}
-
+<div class="line-deg"></div>
 </div>
 
 
@@ -196,7 +199,7 @@
 					{function="Plugin::callHook("event_post_top_options", array(&$value))"}
 				    </div>
 				</div>
-
+				<div class="article_deg "></div>
 			</section>
 			{$hightlighted=$hightlighted+1}
 		{/loop}
