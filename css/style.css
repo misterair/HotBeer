@@ -546,11 +546,14 @@ h1.logo a:after {
 }
 .articleHead h3  {
     color: #8C8C8C;
-    font-size: 1.38em;
+    font-size: 1.18em;
     font-weight: lighter;
-    line-height: 2px;
+    line-height: 50px;
     margin: 0;
     text-shadow: 1px 1px #FFFFFF;
+}
+.favorisTitle  {;
+    line-height: 22px !important;
 }
 .articleHead h4 {
     position: absolute;
