@@ -124,7 +124,17 @@
 					<p>Autoriser la lecture anonyme: <input type="radio"    {if="$articleDisplayAnonymous=='1'"} checked="checked" {/if} value="1" name="articleDisplayAnonymous">Oui <input type="radio" {if="$articleDisplayAnonymous=='0'"} checked="checked" {/if} value="0" name="articleDisplayAnonymous">Non</p>
 					<h3>Nb: si vous choisissez cette option, les utilisateurs non authentifi&eacute; pourront consulter vos flux (sans pouvoir les marquer comme lu/non lu)</h3>
 					<p>Nombre d'articles par pages: <input type="text" value="{$configurationManager->get('articlePerPages')}" name="articlePerPages"></p>
+
+                            <p>Articles les plus récents en premier (sur la page d'accueil)
+<input type="radio"  {if="$articleDisplayHomeSort=='1'"} checked="checked" {/if}value="1" name="articleDisplayHomeSort">Oui <input type="radio" {if="$articleDisplayHomeSort=='0'"} checked="checked" {/if} value="0" name="articleDisplayHomeSort">Non</p>
+
+                            <p>Articles les plus récents en premier (sur les dossiers)
+<input type="radio"  {if="$articleDisplayFolderSort=='1'"} checked="checked" {/if}value="1" name="articleDisplayFolderSort">Oui <input type="radio" {if="$articleDisplayFolderSort=='0'"} checked="checked" {/if} value="0" name="articleDisplayFolderSort">Non</p>
+
+
+
 					<p>Affichage du lien direct de l'article: <input type="radio"  {if="$articleDisplayLink=='1'"} checked="checked" {/if}value="1" name="articleDisplayLink">Oui <input type="radio" {if="$articleDisplayLink=='0'"} checked="checked" {/if} value="0" name="articleDisplayLink">Non</p>
+
 					<p>Affichage de la date de l'article: <input type="radio" {if="$articleDisplayDate=='1'"} checked="checked" {/if} value="1" name="articleDisplayDate">Oui <input type="radio" {if="$articleDisplayDate=='0'"} checked="checked" {/if} value="0" name="articleDisplayDate">Non</p>
 					<p>Affichage de l'auteur de l'article: <input type="radio" {if="$articleDisplayAuthor=='1'"} checked="checked" {/if} value="1" name="articleDisplayAuthor">Oui <input type="radio" {if="$articleDisplayAuthor=='0'"} checked="checked" {/if} value="0" name="articleDisplayAuthor">Non</p>
 					<p>Affichage du contenu de l'article: <input type="radio"  {if="$articleDisplayContent=='1'"} checked="checked" {/if} value="1" name="articleDisplayContent">Oui <input type="radio" {if="$articleDisplayContent=='0'"} checked="checked" {/if} value="0" name="articleDisplayContent">Non</p>

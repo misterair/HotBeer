@@ -118,7 +118,7 @@ section.eventRead > h2 {
 			{$plainDescription=strip_tags($value->getDescription())}	
 			<!-- CORPS ARTICLE -->
 			 
-			<section tabindex="1" id="{$value->getId()}" class="article {if="!$value->getUnread()"} eventRead {/if} {$hightlighted%2==0?'eventHightLighted':''}" >
+			<section tabindex="1" id="{$value->getId()}" class="article {if="!$value->getUnread()"} eventRead {/if}{if="$articleDisplayContent==false"}digest{/if} {if="$value->getFavorite()!=1"}{else} favorised {/if} {$hightlighted%2==0?'eventHightLighted':''}" >
 				<a class="anchor" name="{$value->getId()}"></a>
 				<!-- TITRE -->
 
@@ -158,10 +158,14 @@ section.eventRead > h2 {
 				{if="$articleDisplayContent"}
 				<div class="articleContent">
 					{if="$articleView=='partial'"}
-						{$value->getDescription()}
-					{else}
-						{$value->getContent()}
-					{/if}
+								{function="Plugin::callHook("event_pre_description", array(&$value))"}
+								{$value->getDescription()}
+								{function="Plugin::callHook("event_post_description", array(&$value))"}
+							{else}
+								{function="Plugin::callHook("event_pre_content", array(&$value))"}
+								{$value->getContent()}
+								{function="Plugin::callHook("event_post_content", array(&$value))"}
+							{/if}
 				</div> 
 				{/if}
 				
