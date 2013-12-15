@@ -39,7 +39,9 @@
 				<a class="loginButton"></a>				
 				<div class="loginBox">				
 				<form action="action.php?action=login" method="POST">
-						<input type="text" class="miniInput left" name="login" placeholder="Identifiant"/> <input type="password" class="miniInput left" name="password" placeholder="Mot de passe"/> <button class="red">GO!</button>
+						<input type="text" class="miniInput left" name="login" placeholder="Identifiant"/> 
+						<input type="password" class="miniInput left" name="password" placeholder="Mot de passe"/>
+						 <button class="red">GO!</button>
 				</form>			
 				</div>
 			{else}
@@ -53,7 +55,7 @@
 				<li>{function="Plugin::callHook("navigate_post_link", array(&$myUser))"}</li>
 			</ul>
 			</nav>
-					<button class="deco right" onclick="window.location='action.php?action=logout'"></button>
+					<button class="deco right" onclick="window.location='action.php?action=logout'">{$myUser->getLogin()}</button>
 				{/if}
 				<div class="clear"></div>
 			</div>

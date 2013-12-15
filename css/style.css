@@ -348,7 +348,6 @@ h1.logo a:after {
     transition-duration: 0.15s;
 }
 .deco:hover {opacity:1}
-.deco:before {content:"Déconnexion"}
 .deco:after {
     content:"\f02d";
     font-family: "mfg_labs_iconsetregular";
@@ -533,6 +532,7 @@ h1.logo a:after {
     color: #8C8C8C;
     font-size: 1.28em;
     margin: 0 14px;
+    line-height: 2px;
 }
 .articleHead h2 {
     font-size: 2.38em;
@@ -546,11 +546,13 @@ h1.logo a:after {
 }
 .articleHead h3  {
     color: #8C8C8C;
-    font-size: 1.18em;
+    font-size: 1.1em;
     font-weight: lighter;
-    line-height: 50px;
-    margin: 0;
+    line-height: 16px;
+    margin-top: 16px;
+    padding: 0 8px;
     text-shadow: 1px 1px #FFFFFF;
+    width: 100%;
 }
 .favorisTitle  {;
     line-height: 22px !important;
@@ -986,10 +988,9 @@ footer.parter, header.toper {min-width: 100px}
 }
 @media (max-width:533px) {
 .fav:after,.settings:after, .synchronyzeButton:after {content:""}
+#icons {left: 86px}
 }
-@media (max-width:342px) {
-.deco:before {content:""}
-}
+
 @media (max-width:649px) {
 body { -webkit-animation: bugfix infinite 1s}
 
@@ -998,10 +999,11 @@ body { -webkit-animation: bugfix infinite 1s}
   to { padding: 0; } 
 }
 
+.content {box-shadow: none;}
 aside {
-    background: none repeat scroll 0 0 #eee;
-    border-bottom: 1px solid #CCCCCC;
-    box-shadow: 0 1px #FFFFFF, 0 -2px 2px #DFDFDF inset;
+    background: url("background.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-bottom: none;
+    box-shadow: 0 1px #000000, 0 -2px 2px #212421 inset;
     color: transparent;
     height: 28px;
     margin: 0;
@@ -1013,13 +1015,14 @@ aside {
 }
 aside:hover {
     height: 100%;
+    background: #fff;
+    box-shadow: 0 -1px #0f0f0f,0 1px #c4c4c4, 0 -2px 2px #eee inset, 0 2px 2px #555 inset;
 }
 aside:before {
-    color: #0F0F0F;
+    color: #fff;
     content: "\f008";
     line-height: 28px;
     font-size: 24px;
-    text-shadow: 1px 1px #FFFFFF;
     font-family: 'mfg_labs_iconsetregular';
 }
 
@@ -1041,7 +1044,7 @@ footer.parter, header.toper {min-width: 100px}
 	transition-duration: 0;
 }
 button.lunonlu {opacity: 1}
-.marque_light {opacity:1}
+.marque_light {opacity:0.26}
 .loginButton:hover + .loginBox {display: block}
 }
 
