@@ -1,11 +1,12 @@
-
 {include="header"}
 {if="($configurationManager->get('articleDisplayAnonymous')=='1') || ($myUser!=false)"}
 <div id="wrap">
 
 <div class="content mod item">
 
-<aside class="mod w300p ">
+<aside id ="aside" class="mod w300p ">
+		<button class="buttonSide buttonAside" onclick="addClass('aside', 'asideShow')"></button>
+		<button class="buttonSide buttonNoside" onclick="removeClass('asideShow')"></button>
 		{function="Plugin::callHook("menu_pre_folder_menu", array(&$myUser))"}
 		{function="Plugin::callHook("menu_post_header_options", array(&$myUser))"}
 		<ul class="flux">
@@ -23,10 +24,10 @@
 			<li class="flux">
 			{function="Plugin::callHook("menu_pre_folder_link", array(&$value))"}
 				<a class="readFolder" title="Plier/Deplier le dossier" alt="Plier/Deplier le dossier" onclick="toggleFolder(this,{$value->getId()});" >
-					{if="!$value->getIsopen()"}+{else}-{/if}
+					{if="!$value->getIsopen()"}{else}{/if}
 				</a>
 				
-				<a alt="Lire les evenements de ce dossier" title="Lire les évenements de ce dossier" href="index.php?action=selectedFolder&folder={$value->getId()}">
+				<a class="readTitle" alt="Lire les evenements de ce dossier" title="Lire les évenements de ce dossier" href="index.php?action=selectedFolder&folder={$value->getId()}">
 					{$value->getName()}
 				</a>
 
@@ -44,12 +45,11 @@
 								<li> 
 									{if="isset($unread[$value2['id']])"}  
 								{function="Plugin::callHook("menu_pre_feed_link", array(&$value))"}		
-									
+																								   <button class="fade" onclick="if(confirm('Tout marquer comme lu pour ce flux?'))window.location='action.php?action=readAll&feed={$value2['id']}';">
+										<span class="fade" alt="marquer comme lu" title="marquer comme lu">({$unread[$value2['id']]})</span>
+									</button>	
 									<a href="index.php?action=selectedFeed&feed={$value2['id']}" alt="{$value2['url']}" title="{$value2['url']}">{$value2['name']} </a>
 
-									<button class="fade" onclick="if(confirm('Tout marquer comme lu pour ce flux?'))window.location='action.php?action=readAll&feed={$value2['id']}';">
-										<span class="fade" alt="marquer comme lu" title="marquer comme lu">({$unread[$value2['id']]})</span>
-									</button>
 									{function="Plugin::callHook("menu_post_feed_link", array(&$value))"}
 									{/if}
 								</li>
@@ -100,7 +100,6 @@ section.eventRead > h2 {
     text-decoration: none;
 }
 </style>	
-<div class="clear"></div>
 <h3 class="favorisTitle">{$numberOfItem} favoris<h3>
 {/if}
 
@@ -135,9 +134,19 @@ section.eventRead > h2 {
 					 <a class="favorite" onclick="removeFavorite(this,{$value->getId()});" ><img class="marque_dark" src="marque_dark.png" style="height:36px;width:20px"></a> 
 					 {/if}
 				</div>
+                               	<div class="buttons-barBis">
+					<button class="right lunonlu" onclick="readThis(this,{$value->getId()}{$action=='unreadEvents' || $action==''?',true':''});"></button>
+				</div>
+
 
 				<!-- DETAILS + OPTIONS -->
                                 <ul class="article_complet">
+
+				<!-- CONTENU/DESCRIPTION -->
+				{if="$articleDisplayContent"}
+				<div class="articleContent">
+					{if="$articleView=='partial'"}
+
 				<h3 class="articleDetails">
 					{function="Plugin::callHook("event_pre_top_options", array(&$value))"}
 					{if="$articleDisplayLink"}
@@ -154,17 +163,34 @@ section.eventRead > h2 {
 					{function="Plugin::callHook("event_post_top_options", array(&$value))"}
 				</h3>
 
-				<!-- CONTENU/DESCRIPTION -->
-				{if="$articleDisplayContent"}
-				<div class="articleContent">
-					{if="$articleView=='partial'"}
 								{function="Plugin::callHook("event_pre_description", array(&$value))"}
 								{$value->getDescription()}
 								{function="Plugin::callHook("event_post_description", array(&$value))"}
 							{else}
+								
+							<div class="bubble">{$value->getContent()}</div>								
+							<div class="bubbleText">
+
+				<h3 class="articleDetails">
+					{function="Plugin::callHook("event_pre_top_options", array(&$value))"}
+					{if="$articleDisplayLink"}
+						<!--<img src="http://www.google.com/s2/favicons?domain="/> Favicon-->
+						<a href="{$value->getLink()}" target="_blank">{$allFeeds['idMap'][$value->getFeed()]['name']}</a>
+					{/if}
+					{if="$articleDisplayAuthor"}
+					 par {$value->getCreator()}
+					{/if}
+
+					{if="$articleDisplayDate"} 
+						{$value->getPubdateWithInstant($time)} 
+					{/if}
+					{function="Plugin::callHook("event_post_top_options", array(&$value))"}
+				</h3>
+
 								{function="Plugin::callHook("event_pre_content", array(&$value))"}
 								{$value->getContent()}
 								{function="Plugin::callHook("event_post_content", array(&$value))"}
+							</div>
 							{/if}
 				</div> 
 				{/if}
@@ -172,14 +198,16 @@ section.eventRead > h2 {
 				{if="$articleView!='partial'"}
 				<!-- RAPPEL DETAILS + OPTIONS POUR LES ARTICLES AFFICHES EN ENTIER -->
 				<h3 class="articleDetails">
+
 					{function="Plugin::callHook("event_pre_bottom_options", array(&$value))"}
 					 <div class="clear"></div>
 					{function="Plugin::callHook("event_post_bottom_options", array(&$value))"}
 				</h3>
 				{/if}
-				
-                                </ul><div class="article_deg"></div>
-                             
+                                </ul>
+					<button class="buttonDeg buttonLarge" onclick="addClass('{$value->getId()}', 'large')"></button>
+					<button class="buttonDeg buttonSmall" onclick="removeClass('large')"></button>
+				<div class="article_deg"></div>
 			</section>
 			{$hightlighted=$hightlighted+1}
 		{/loop}

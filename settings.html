@@ -6,7 +6,9 @@
 		<div id="wrap">
 
 			<div class="content mod item">
-			<aside class="mod w300p">
+			<aside id="aside" class="mod w300p">
+		<button class="buttonSide buttonAside" onclick="addClass('aside', 'asideShow')"></button>
+		<button class="buttonSide buttonNoside" onclick="removeClass('asideShow')"></button>
 				<ul>
 						<li class="pointer" onclick="$('.content section').hide();$('.content #Promo').fadeToggle(200);">A propos</li>
 						<li class="pointer" onclick="$('.content section').hide();$('.content #manageBloc').fadeToggle(200);">Gestion des flux</li>
@@ -114,7 +116,7 @@
 				</section>
 				<section class="prefLigne">
 						<h2>Code de synchronisation:<h2>
-						{$synchronisationCode}
+						<p style="color:#FC4C03;">{$synchronisationCode}</p>
 						<br/>
 				</section>
 
@@ -201,7 +203,7 @@
 					{$feedsForFolder=$value->getFeeds()}
 
 					<li class="gestfluxLigne">
-						<h1 class="folder" >{$value->getName()} ({function="count($feedsForFolder)"})</h1>
+						<h1 class="folder" >{$value->getName()} <b style="color:#FC4C03">({function="count($feedsForFolder)"})</b></h1>
 						<table  style="width:100%;">
 							{if="count($feeds)!=0"}
 							{loop="$feedsForFolder"}
