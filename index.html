@@ -5,8 +5,8 @@
 <div class="content mod item">
 
 <aside id ="aside" class="mod w300p ">
-		<button class="buttonSide buttonAside" onclick="addClass('aside', 'asideShow')"></button>
-		<button class="buttonSide buttonNoside" onclick="removeClass('asideShow')"></button>
+		<button class="buttonSide buttonAside" title="Afficher la barre latérale" onclick="addClass('aside', 'asideShow')"></button>
+		<button class="buttonSide buttonNoside" title="Masquer la barre latérale" onclick="removeClass('aside', 'asideShow')"></button>
 		{function="Plugin::callHook("menu_pre_folder_menu", array(&$myUser))"}
 		{function="Plugin::callHook("menu_post_header_options", array(&$myUser))"}
 		<ul class="flux">
@@ -109,7 +109,7 @@ section.eventRead > h2 {
 <div class="clear"></div>
 <h3 class="titleLu">Eléments non lus: {$numberOfItem}</h3>
 {/if}
-
+<button class="buttonCloseAll CloseAll" title="Tout Replier" onclick="removeAllClass('large')"></button>
 </div>
 
 
@@ -205,8 +205,8 @@ section.eventRead > h2 {
 				</h3>
 				{/if}
                                 </ul>
-					<button class="buttonDeg buttonLarge" onclick="addClass('{$value->getId()}', 'large')"></button>
-					<button class="buttonDeg buttonSmall" onclick="removeClass('large')"></button>
+					<button class="buttonDeg buttonLarge" title="Afficher le contenu" onclick="addClass('{$value->getId()}', 'large')"></button>
+					<button class="buttonDeg buttonSmall" title="Masquer le contenu" onclick="removeClass('{$value->getId()}', 'large')"></button>
 				<div class="article_deg"></div>
 			</section>
 			{$hightlighted=$hightlighted+1}
@@ -215,8 +215,9 @@ section.eventRead > h2 {
 		<!-- PIED DE PAGE DES ARTICLES -->
 
 		{if="$pages!=0"}
-			<p class="PiedPage"><b>L</b>
-
+			<p class="PiedPage">
+<a href="#"><button class="buttonCloseAll Up" title="Revenir en Haut"></button></a>
+				<b>L</b>
 				{if="$previousPages>0"}
 				<a href="index.php?action={$action}{if="$action=='selectedFeed'"}&feed={$currentFeed->getId()}{/if}{if="$action=='selectedFolder'"}&folder={$currentFolder->getId()}{/if}&page={$previousPages}"...</a>
 				{/if}

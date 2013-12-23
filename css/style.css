@@ -664,12 +664,31 @@ h3.favorisTitle  {;
 		z-index:2
 	}
 
-.buttonLarge:before {
-    content: "\f004";
+.Up:before{content: "\2191";}
+.CloseAll:before{content: "\f005";}
+.buttonCloseAll {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: solid 1px #ccc;
+    border-bottom: none;
+    border-radius: 0 8px 0 0;
+    bottom: 0;
+    box-shadow: 1px 0 #FFFFFF, 0 2px 2px #DFDFDF inset;
+    color: #8C8C8C;
+    font-size: 17px;
+    font-family: "mfg_labs_iconsetregular";
+    font-weight: bolder;
+    height: 24px;
+    left: 0;
+    line-height: 14px;
+    position: absolute;
+    text-align: center;
+    text-shadow: 1px 1px #FFFFFF;
+    width: 30px;
+    z-index: 3
 }
-.buttonSmall:before {
-    content: "\f005";
-}
+
+.buttonLarge:before {content: "\f004";}
+.buttonSmall:before {content: "\f005";}
 .buttonDeg {
     background: none repeat scroll 0 0 #EEEEEE;
     border: solid 1px #ccc;
@@ -696,12 +715,8 @@ h3.favorisTitle  {;
 .large > .buttonLarge {display:none}
 
 
-.buttonAside:before {
-    content: "\f007";
-}
-.buttonNoside:before {
-    content: "\f006";
-}
+.buttonAside:before {content: "\f007";}
+.buttonNoside:before {content: "\f006";}
 .buttonNoside {border-radius: 0 0 8px 0;}
 .buttonSide {
     background: none repeat scroll 0 0 #E9E9E9;
