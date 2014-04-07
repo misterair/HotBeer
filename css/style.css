@@ -759,9 +759,8 @@ h3.favorisTitle  {;
     -o-column-count: 1;
 	}
 
-        .articleContent img {
-        /*margin: 15px auto;*/
-        text-align: center;
+    .articleContent img {
+        margin: 0 auto;
         position: relative;
         }
 	h2.articleTitle {
