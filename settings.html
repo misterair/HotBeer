@@ -6,7 +6,9 @@
 		<div id="wrap">
 
 			<div class="content mod item">
-			<aside class="mod w300p">
+			<aside id="aside" class="mod w300p">
+		<button class="buttonSide buttonAside" onclick="addClass('aside', 'asideShow')"></button>
+		<button class="buttonSide buttonNoside" onclick="removeClass('aside', 'asideShow')"></button>
 				<ul>
 						<li class="pointer" onclick="$('.content section').hide();$('.content #Promo').fadeToggle(200);">A propos</li>
 						<li class="pointer" onclick="$('.content section').hide();$('.content #manageBloc').fadeToggle(200);">Gestion des flux</li>
@@ -114,7 +116,7 @@
 				</section>
 				<section class="prefLigne">
 						<h2>Code de synchronisation:<h2>
-						{$synchronisationCode}
+						<p style="color:#FC4C03;">{$synchronisationCode}</p>
 						<br/>
 				</section>
 
@@ -124,7 +126,17 @@
 					<p>Autoriser la lecture anonyme: <input type="radio"    {if="$articleDisplayAnonymous=='1'"} checked="checked" {/if} value="1" name="articleDisplayAnonymous">Oui <input type="radio" {if="$articleDisplayAnonymous=='0'"} checked="checked" {/if} value="0" name="articleDisplayAnonymous">Non</p>
 					<h3>Nb: si vous choisissez cette option, les utilisateurs non authentifi&eacute; pourront consulter vos flux (sans pouvoir les marquer comme lu/non lu)</h3>
 					<p>Nombre d'articles par pages: <input type="text" value="{$configurationManager->get('articlePerPages')}" name="articlePerPages"></p>
+
+                            <p>Articles les plus récents en premier (sur la page d'accueil)
+<input type="radio"  {if="$articleDisplayHomeSort=='1'"} checked="checked" {/if}value="1" name="articleDisplayHomeSort">Oui <input type="radio" {if="$articleDisplayHomeSort=='0'"} checked="checked" {/if} value="0" name="articleDisplayHomeSort">Non</p>
+
+                            <p>Articles les plus récents en premier (sur les dossiers)
+<input type="radio"  {if="$articleDisplayFolderSort=='1'"} checked="checked" {/if}value="1" name="articleDisplayFolderSort">Oui <input type="radio" {if="$articleDisplayFolderSort=='0'"} checked="checked" {/if} value="0" name="articleDisplayFolderSort">Non</p>
+
+
+
 					<p>Affichage du lien direct de l'article: <input type="radio"  {if="$articleDisplayLink=='1'"} checked="checked" {/if}value="1" name="articleDisplayLink">Oui <input type="radio" {if="$articleDisplayLink=='0'"} checked="checked" {/if} value="0" name="articleDisplayLink">Non</p>
+
 					<p>Affichage de la date de l'article: <input type="radio" {if="$articleDisplayDate=='1'"} checked="checked" {/if} value="1" name="articleDisplayDate">Oui <input type="radio" {if="$articleDisplayDate=='0'"} checked="checked" {/if} value="0" name="articleDisplayDate">Non</p>
 					<p>Affichage de l'auteur de l'article: <input type="radio" {if="$articleDisplayAuthor=='1'"} checked="checked" {/if} value="1" name="articleDisplayAuthor">Oui <input type="radio" {if="$articleDisplayAuthor=='0'"} checked="checked" {/if} value="0" name="articleDisplayAuthor">Non</p>
 					<p>Affichage du contenu de l'article: <input type="radio"  {if="$articleDisplayContent=='1'"} checked="checked" {/if} value="1" name="articleDisplayContent">Oui <input type="radio" {if="$articleDisplayContent=='0'"} checked="checked" {/if} value="0" name="articleDisplayContent">Non</p>
@@ -191,7 +203,7 @@
 					{$feedsForFolder=$value->getFeeds()}
 
 					<li class="gestfluxLigne">
-						<h1 class="folder" >{$value->getName()} ({function="count($feedsForFolder)"})</h1>
+						<h1 class="folder" >{$value->getName()} <b style="color:#FC4C03">({function="count($feedsForFolder)"})</b></h1>
 						<table  style="width:100%;">
 							{if="count($feeds)!=0"}
 							{loop="$feedsForFolder"}
@@ -249,7 +261,7 @@
 
 				<section id="pluginBloc">
 					<h2>Plugins :</h2>
-					<p>(Vous pouvez télécharger et installer de nouveaux plugins <a href="https://github.com/ldleman/Leed-market/tree/master/Marigolds">sur le Leed Market</a>.)</p>
+					<p>(Vous pouvez télécharger et installer de nouveaux plugins sur le <a href="https://github.com/ldleman/Leed-market/tree/master/Marigolds">Leed Market</a>.)</p>
 					{if="$myUser!=false"}
 					<ul class="pluginList">
 					{if="count($plugins)==0"}
@@ -282,6 +294,9 @@
 				<section>
 
 			</article>
+			<nav class="pied">
+				<div class="aside_deg"></div>
+			</nav>
 			
 			</div>
 		</div> <!-- #wrap -->
