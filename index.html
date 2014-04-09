@@ -41,7 +41,6 @@ section.eventRead > h2 {
 <div class="clear"></div>
 <h3 class="titleLu">Eléments non lus: {$numberOfItem}</h3>
 {/if}
-<button class="buttonCloseAll CloseAll" title="Tout Replier" onclick="removeAllClass('large')"></button>
 </div>
 <!--SIDEBAR-->
 <aside id ="aside" class="mod w300p ">
@@ -124,14 +123,14 @@ section.eventRead > h2 {
 				</h2>
 
                                	<div class="buttons-bar">
-					<button class="right lunonlu" onclick="removeClass('{$value->getId()}', 'large'),readThis(this,{$value->getId()}{$action=='unreadEvents' || $action==''?',true':''});"></button>
+					<button class="right lunonlu" onclick="removeClass('article', 'hide'), removeClass('{$value->getId()}', 'large'),readThis(this,{$value->getId()}{$action=='unreadEvents' || $action==''?',true':''});"></button>
 					{if="$value->getFavorite()!=1"}  <a class="favorite" onclick="addFavorite(this,{$value->getId()});" ><img class="marque_light" style="height:36px;width:20px" src="marque_light.png"></a> 
 					{else}
 					 <a class="favorite" onclick="removeFavorite(this,{$value->getId()});" ><img class="marque_dark" src="marque_dark.png" style="height:36px;width:20px"></a> 
 					 {/if}
 				</div>
                                	<div class="buttons-barBis">
-					<button class="right lunonlu" onclick="removeClass('{$value->getId()}', 'large'), readThis(this,{$value->getId()}{$action=='unreadEvents' || $action==''?',true':''});"></button>
+					<button class="right lunonlu" onclick="removeClass('article', 'hide'), removeClass('{$value->getId()}', 'large'), readThis(this,{$value->getId()}{$action=='unreadEvents' || $action==''?',true':''});"></button>
 				</div>
 
 
