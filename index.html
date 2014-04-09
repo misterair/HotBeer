@@ -201,8 +201,8 @@ section.eventRead > h2 {
 				</h3>
 				{/if}
                                 </ul>
-					<button class="buttonDeg buttonLarge" title="Afficher le contenu" onclick="addClass('{$value->getId()}', 'large')"></button>
-					<button class="buttonDeg buttonSmall" title="Masquer le contenu" onclick="removeClass('{$value->getId()}', 'large')"></button>
+					<button class="buttonDeg buttonLarge" title="Afficher le contenu" onclick="addClass('{$value->getId()}', 'large'), addClass('article', 'hide')"></button>
+					<button class="buttonDeg buttonSmall" title="Masquer le contenu" onclick="removeClass('{$value->getId()}', 'large'),removeClass('article', 'hide')"></button>
 				<div id="degVertical"></div>
 			</section>
 			{$hightlighted=$hightlighted+1}

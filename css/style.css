@@ -230,7 +230,16 @@ h1.logo a:after {
 	-ms-transition-duration: 0.35s;
 	transition-duration: 0.35s;
 }
-        .large {display: block; background: #fff !important; height:100% !important; box-shadow:0 0 4px #666 !important; opacity:1 }
+article.hide section{
+display:none;
+}
+.large {
+	display: block !important;
+	background: #fff !important;
+	height:100% !important;
+	box-shadow:1px 0  #ccc inset !important; 
+	opacity:1 
+	}
 .large> ul {
 	display: block; 
 	height:100%;
