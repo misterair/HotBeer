@@ -1123,7 +1123,7 @@ nav li{list-style:none; display:inline}
 .buttons-barBis {right:1%;}
 }
 @media (max-width:1000px){
-.buttons-barBis {right: 3%;}
+.buttons-barBis {right: 2%;}
 }
 @media (max-width:880px){
 .buttons-barBis {right:0;}
