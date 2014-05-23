@@ -1,0 +1,316 @@
+
+{include="header"}
+
+{if="($configurationManager->get('articleDisplayAnonymous')=='1') || ($myUser!=false)"}
+
+		<div id="wrap">
+
+			<div class="content mod item">
+			
+			<aside id="aside" class="mod w300p">
+				<ul>
+						<li class="pointer" onclick="$('.content section').hide();$('.content #Promo').fadeToggle(200);">A propos</li>
+						<li class="pointer" onclick="$('.content section').hide();$('.content #manageBloc').fadeToggle(200);">Gestion des flux</li>
+						<li class="pointer" onclick="$('.content section').hide();$('.content #manageFolderBloc').fadeToggle(200);">Gestion des Dossiers</li>
+						<li class="pointer" onclick="$('.content section').hide();$('.content #synchronizeBloc').fadeToggle(200);">Mise &agrave; jour manuelle des flux</a></li>
+						<li class="pointer" onclick="$('.content section').hide();$('.content #preferenceBloc,.content #preferenceBloc section').fadeToggle(200);">Pr&eacute;f&eacute;rences</li>
+						<li class="pointer" onclick="$('.content section').hide();$('.content #pluginBloc').fadeToggle(200);">Plugins disponibles</li>
+						<li class="pointer" onclick="$('.content section').hide();$('.content #importBloc').fadeToggle(200);">Import/Export</li>
+						<li class="pointer" onclick="$('.content section').hide();$('.content #bookBloc').fadeToggle(200);">Bookmarklet</li>
+						<li class="pointer" onclick="if(confirm('Etes vous sûr de vouloir vider tout les évenements?')){window.location='action.php?action=purge';}">Vider les &eacute;venements</a></li>
+						<li class="pointer" onclick="$('.content section').hide();$('.content #bookPlugins').fadeToggle(200);">Autres Paramètres</li>						
+				</ul>
+			</aside>
+			
+
+
+
+			<article id="article">
+			
+				<button id="buttonAside" class="buttonSide set" title="Afficher la barre latérale" onclick="addClass('aside', 'asideShow'),addClass('buttonAside', 'hide'),addClass('buttonNoside', 'show'),addClass('article','articleMargin')"></button>
+				<button id="buttonNoside" class="buttonSide set" title="Masquer la barre latérale" onclick="removeClass('aside', 'asideShow'),removeClass('buttonAside', 'hide'),removeClass('buttonNoside', 'show'),removeClass('article','articleMargin')"></button>
+
+				{if="(isset($myUser)) && ($myUser!=false)"}
+				<section id="Promo">
+					<h2> A propos </h2>
+					<p>(Merci d'utiliser Leed, le fabuleux agrégateur de flux RSS créé par <a href="http://projet.idleman.fr/leed/" target="blank">‎Idleman</a>, avec ce génialissime thème <a href="http://remitaines.com/hot-beer" target="blank">HotBeer</a>.)</p>
+				   <li class="gestfluxLigne">
+					<br/>
+					<h2>HotBeer</h2>
+					<br/>
+					<p>HotBeer est un thème créé avec mes modestes connaissances, qui privilégie l'épuration pour rester focaliser sur l'essentiel. Il n'y a plus que le contenu de vos flux pour vous distraire! J'essaie de le tenir régulièrement à jour, peaufiner chaque détail garantir la meilleure expérience possible et la meilleure compatibilité avec les versions de Leed. N'hésitez pas à contribuer au développement de ce projet, autant pour le code que pour donner votre opinion! La <a href="https://github.com/misterair/HotBeer" target="blank">page Github</a> est là pour cela.</p>
+					<br/>
+<p>HotBeer est distribué sous license BeerWare:</p>
+ <p>* ----------------------------------------------------------------------------*</p>
+ <p> « LICENCE BEERWARE » (Révision 42):</p>
+<p>  mister.air@gmail.com a créé ce fichier. Tant que vous conservez cet avertissement,</p>
+ <p> vous pouvez faire ce que vous voulez de ce truc. Si on se rencontre un jour et</p>
+ <p> que vous pensez que ce truc vaut le coup, vous pouvez me payer une bière en retour.</p>
+<p>   Mister aiR</p>
+<p> * ----------------------------------------------------------------------------*</p>
+				   </li>
+				   <li class="gestfluxLigne">
+					<br/>
+					<h2>Leed</h2>
+					<br/>
+					<p> Leed (contraction de Light Feed) est un agrégateur RSS/ATOM minimaliste et évolutif,qui permet la consultation de flux RSS de manière rapide et non intrusive. Cet agrégateur peut s'installer sur votre propre serveur et fonctionne avec un système de tâches cron afin de traiter les informations de manière transparente et de les afficher le plus rapidement possible lorsque vous vous y connecte. Il est possible d'étendre ses fonctions avec l'ajout de plugin et de le personnaliser avec des thèmes.</p>
+</br>
+			<ul>
+				<li><b>Application :</b> Leed (Light Feed)</li>
+				<li><b>Version :</b> {$VERSION_NUMBER} {$VERSION_NAME}</li>
+				<li><b>Auteur :</b> Valentin CARRUESCO aka <a href="mailto:idleman@idleman.fr">Idleman</a></li>
+				<li><b>Page projet :</b> <a href="http://projet.idleman.fr/leed">projet.idleman.fr/leed</a></li>
+				<li><b>D&eacute;pot SVN :</b> <a href="http://projet.idleman.fr/leed.svn">projet.idleman.fr/leed.svn</a></li>
+				<li><b>Licence :</b> <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/">CC by-nc-nd</a> <br/><b>Nb :</b> les travaux d&eacute;riv&eacute;s peuvent &ecirc;tre autoris&eacute;s avec accord de l'auteur</li>
+			</ul>
+				   </li>
+				   <li class="gestfluxLigne">
+			<br/>
+			<h2>Librairies</h2>
+			<ul>
+				<li><b>Responsive / Cross browser :</b> Initializr (<a href="http://www.initializr.com">initializr.com</a>)</li>
+				<li><b>Javascript :</b> JQuery (<a href="http://www.jquery.com">jquery.com</a>)</li>
+				<li><b>PHP Template :</b> RainTPL (<a href="http://www.raintpl.com">raintpl.com</a>)</li>
+				<li><b>Parseur RSS :</b> SimplePie (<a href="http://simplepie.org">simplepie.org</a>)</li>
+				<li><b>Icon set:</b> mfglabs-iconset (<a href="http://mfglabs.github.io/mfglabs-iconset/">mfglabs.github.io/mfglabs-iconset</a>)</li>
+			</ul><br/>
+				   </li>
+				</section>
+
+				<section id="preferenceBloc">
+					<form method="POST" action="action.php?action=updateConfiguration">
+					<h2>Pr&eacute;f&eacute;rences :</h2>
+					<section class="prefLigne">
+						<h2 class="settingsTitle">G&eacute;n&eacute;ral</h2>
+						<p>Racine du projet : <input type="text" name="root" value="{$configurationManager->get('root')}"></p>
+						<h3>Laissez bien un "/" en fin de chaine ex : http://monsite.com/leed/</h3>
+					</section>
+
+
+				<section class="prefLigne"> 
+					<h2>Utilisateur</h2>
+					<p>Identifiant : <input type="text" name="login" value="{$myUser->getLogin()}"></p>
+					<p>Mot de passe : <input type="text" name="password" value=""></p>
+					<h3>Laissez le champs vide si vous ne souhaitez pas changer le mot de passe</h3>
+				
+				</section>
+
+				<section class="prefLigne">
+					<h2>Synchronisation</h2>
+					<p><input type="radio"  {if="$synchronisationType=='auto'"} checked="checked" {/if} value="auto" name="synchronisationType"> <strong>Automatique (complet) :</strong> Le script mettra à jour automatiquement tous vos flux en une seule fois, ceci permet la mise &agrave; jour en une foix de tous vos flux mais peux faire ramer votre serveur, les appels cron ne doivent pas être trop rapproch&eacute;s</p>
+					<p><input type="radio" {if=" $synchronisationType=='graduate'"} checked="checked" {/if}  value="graduate" name="synchronisationType"> <strong>Automatique (gradu&eacute;) :</strong> Le script mettra à jour automatiquement les 10 flux les plus vieux en terme de mise &agrave; jour, ceci permet d'alleger la charge serveur et d'eviter els timeout intempestif mais necessiteun appel de cron plus fréquent afin de mettre à jour le plus de flux possible</p>
+					<p><input type="radio" {if="$synchronisationType=='manual'"} checked="checked" {/if}  value="manual" name="synchronisationType"> <strong>Manuelle (complet) :</strong> Le script ne fait aucune mise à jour automatique, vous devez faire vous même les mises &agrave; jour depuis l'espace administration.</p>
+				</section>
+				<section class="prefLigne">
+						<h2>Options de synchronisation</h2>
+						<fieldset>
+							<strong>Activer le Cache</strong>
+							<input type="radio" {if="$synchronisationEnableCache"} checked="checked" {/if} value="1" id="synchronisationEnableCacheYes" name="synchronisationEnableCache" /><label for="synchronisationEnableCacheYes">Oui</label>
+							<input type="radio" {if="!$synchronisationEnableCache"} checked="checked" {/if} value="0" id="synchronisationEnableCacheNo" name="synchronisationEnableCache" /><label for="synchronisationEnableCacheNo">Non</label>
+							<p>Cette option vous permet de désactiver la mise en cache. Cependant, la désactivation du cache peut entraîner des temps de chargement plus longs.</p>
+						</fieldset>
+						<fieldset>
+							<strong>Forcer l'intégration</strong>
+							<input type="radio" {if="$synchronisationForceFeed"} checked="checked" {/if} value="1" id="synchronisationForceFeedYes" name="synchronisationForceFeed" /><label for="synchronisationForceFeedYes">Oui</label>
+							<input type="radio" {if="!$synchronisationForceFeed"} checked="checked" {/if} value="0" id="synchronisationForceFeedNo" name="synchronisationForceFeed" /><label for="synchronisationForceFeedNo">Non</label>
+							<p>Les flux RSS et Atom sont censés avoir des types MIME associés spécifiques afin que le logiciel sache quel type de données il s'agit. Certains flux ne suivent pas ces règles (par exemple text/plain). SimplePie suit les meilleures pratiques par défaut, mais vous pouvez forcer l'intégration avec ce paramètre.</p>
+						</fieldset>
+				</section>
+				<section class="prefLigne">
+						<h2>Code de synchronisation:<h2>
+						<p style="color:#FC4C03;">{$synchronisationCode}</p>
+						<br/>
+				</section>
+
+				<section class="prefLigne">
+					{if="$myUser!=false"}
+					<h2>Pr&eacute;ferences</h2>
+					<p>Autoriser la lecture anonyme: <input type="radio"    {if="$articleDisplayAnonymous=='1'"} checked="checked" {/if} value="1" name="articleDisplayAnonymous">Oui <input type="radio" {if="$articleDisplayAnonymous=='0'"} checked="checked" {/if} value="0" name="articleDisplayAnonymous">Non</p>
+					<h3>Nb: si vous choisissez cette option, les utilisateurs non authentifi&eacute; pourront consulter vos flux (sans pouvoir les marquer comme lu/non lu)</h3>
+					<p>Nombre d'articles par pages: <input type="text" value="{$configurationManager->get('articlePerPages')}" name="articlePerPages"></p>
+
+                            <p>Articles les plus récents en premier (sur la page d'accueil)
+<input type="radio"  {if="$articleDisplayHomeSort=='1'"} checked="checked" {/if}value="1" name="articleDisplayHomeSort">Oui <input type="radio" {if="$articleDisplayHomeSort=='0'"} checked="checked" {/if} value="0" name="articleDisplayHomeSort">Non</p>
+
+                            <p>Articles les plus récents en premier (sur les dossiers)
+<input type="radio"  {if="$articleDisplayFolderSort=='1'"} checked="checked" {/if}value="1" name="articleDisplayFolderSort">Oui <input type="radio" {if="$articleDisplayFolderSort=='0'"} checked="checked" {/if} value="0" name="articleDisplayFolderSort">Non</p>
+
+
+
+					<p>Affichage du lien direct de l'article: <input type="radio"  {if="$articleDisplayLink=='1'"} checked="checked" {/if}value="1" name="articleDisplayLink">Oui <input type="radio" {if="$articleDisplayLink=='0'"} checked="checked" {/if} value="0" name="articleDisplayLink">Non</p>
+
+					<p>Affichage de la date de l'article: <input type="radio" {if="$articleDisplayDate=='1'"} checked="checked" {/if} value="1" name="articleDisplayDate">Oui <input type="radio" {if="$articleDisplayDate=='0'"} checked="checked" {/if} value="0" name="articleDisplayDate">Non</p>
+					<p>Affichage de l'auteur de l'article: <input type="radio" {if="$articleDisplayAuthor=='1'"} checked="checked" {/if} value="1" name="articleDisplayAuthor">Oui <input type="radio" {if="$articleDisplayAuthor=='0'"} checked="checked" {/if} value="0" name="articleDisplayAuthor">Non</p>
+					<p>Affichage du contenu de l'article: <input type="radio"  {if="$articleDisplayContent=='1'"} checked="checked" {/if} value="1" name="articleDisplayContent">Oui <input type="radio" {if="$articleDisplayContent=='0'"} checked="checked" {/if} value="0" name="articleDisplayContent">Non</p>
+					<p>Type d'affichage du contenu: <input type="radio" {if="$articleView=='partial'"} checked="checked" {/if} value="partial" name="articleView">Partiel <input type="radio" {if="$articleView=='complete'"} checked="checked" {/if} value="complete" name="articleView">Complet</p>
+					<h3>Nb: si vous choissisez un affichage partiel des articles, un click sur ces derniers menera à l'article sur le blog de l'auteur.</h3>
+					<p>Conserver les <input type="text" value="{$configurationManager->get('feedMaxEvents')}" name="feedMaxEvents"> derniers &eacute;venement d'un flux</p>
+					<h3>Nb: Plus il y aura d'&eacute;venements &agrave; conserver, plus votre abse de données sera importante. Nous vous conseillons de garder les 50 derniers evenements maximums pour conserver une performance correcte.<br>Notez que vos &eacute;venements marqu&eacute;s comme favoris ne seront jamais supprim&eacute;s</h3>
+				
+				</section>
+
+
+
+				<button name="installButton" class="red">Enregistrer</button>
+				</form>
+				{else}
+				<p>Vous devez &eacute;tre connect&eacute; pour voir le bookmarklet.</p>
+				{/if}
+				</section>
+			{/if}
+
+				<section id="manageFolderBloc">
+					<h2>Gestion des dossiers ({function="count($folders)"}) :</h2>
+				<li class="gestfluxLigne">
+					<br/>
+					<form method="POST" action="action.php?action=addFolder">
+						<strong>Ajouter un nouveau dossier</strong> <input type="text" name="newFolder"> <button class="red right">Ajouter</button>
+					</form>
+					<br/>
+				</li>
+				<li class="gestfluxLigne">
+					<br/>
+					<table id="feedTable" style="width:100%;text-align:left">
+						
+						{loop="$folders"}
+						<tr><td style="width:50%;font-variant: small-caps;font-weight: bolder;">{$value->getName()}</td><td><button class="black right" onclick="renameFolder(this,{$value->getId()})">Renommer</button></td><td>{if="$value->getId()!='1'"}<button class="red right" onclick="if(confirm('Etes vous sur de vouloir supprimer ce dossier? Cela supprimera tous les flux qu\'il contient.'))window.location='action.php?action=removeFolder&id={$value->getId()}'">Supprimer</button>{/if}</td></tr>
+						{/loop}
+					</table>
+				</li>
+				</section>
+
+
+			<section id="manageBloc">
+
+					<h2>Gestion des flux :</h2>
+					<ul class="gestflux">
+
+					<form action="action.php?action=addFeed" method="POST">
+					
+				<li class="gestfluxLigne">
+					<h1>Ajouter depuis une URL</h1>
+					<p>Lien du flux RSS : <input type="text" name="newUrl" placeholder="http://monflux.com/rss"/>&nbsp;
+					 <select name="newUrlCategory">
+						{loop="$folders"}
+							<option {if="$value->getId()==1"}selected="selected"{/if} value="{$value->getId()}">{$value->getName()}</option>
+						{/loop}
+					</select>
+					 <button class="red">Ajouter</button></p>
+				
+				</li>
+				</form>
+				    {$feedsForFolder=""}
+					{loop="$folders"}  
+					
+					{$feedsForFolder=$value->getFeeds()}
+
+					<li class="gestfluxLigne">
+						<h1 class="folder" >{$value->getName()} <b style="color:#FC4C03">({function="count($feedsForFolder)"})</b></h1>
+						<table  style="width:100%;">
+							{if="count($feeds)!=0"}
+							{loop="$feedsForFolder"}
+								<tr>
+									<td style="width:50%;"><a href="index.php?action=selectedFeed&feed={$value2->getId();}">{$value2->getName()}</a></td>
+									<td><select onchange="changeFeedFolder(this,{$value2->getId()});">
+										{loop="$folders"}
+											<option {if="$value2->getFolder()==$value3->getId()"}selected="selected"{/if} value="{$value3->getId()}">{$value3->getName()}</option>
+										{/loop}
+									</select></td>
+									<td><button class="black right" onclick="renameFeed(this,{$value2->getId()})">Renommer</button></td>
+									<td><button class="red right" onclick="if(confirm('Etes vous sûr de vouloir supprimer ce flux?')){window.location='action.php?action=removeFeed&id={$value2->getId()}';}">Supprimer</button></td></tr>
+							{/loop}
+							{/if}
+						</table>
+					</li>
+					{/loop}
+				</ul>
+				</section>
+
+				<section id="bookBloc">
+					<h2>Utiliser le bookmarklet :</h2>
+					<p>Vous pouvez ajout le bookmaklet ci dessus a votre naviguateur pour vous inscrire plus rapidemment au flux :</p>
+					{if="$myUser!=false"}
+					<a class="red" href='javascript:document.location="{$configurationManager->get('root')}action.php?action=login&newUrl="+escape(document.location)+"&usr={function="sha1($myUser->getPassword().$myUser->getLogin())"}'>+ Ajouter à Leed</a>
+					{else}
+					<p>Vous devez &eacute;tre connect&eacute; pour voir le bookmarklet.</p>
+					{/if}
+				</section>
+				
+				
+				<section id="importBloc">
+				<h2>Import/Export de flux</h2>
+				<li class="gestfluxLigne">
+				<form action="action.php?action=exportFeed" method="POST">
+					<br/>
+					<h4>Exporter les flux au format opml</h4>
+					<p>Fichier OPML : <button name="exportButton" class="red">Exporter</button></p>
+				</form>
+				</li>
+				<li class="gestfluxLigne">
+					<br/>
+					<h4>Importer des flux au format opml</h4>
+					 <iframe class="importFrame" src="action.php?action=importForm" name="idFrame" id="idFrame" width="100%"></iframe>
+				</li>
+				</section>
+
+				<section id="synchronizeBloc">
+					<br/>
+					<h2>Synchronisation manuelle des Flux</h2>
+					<li class="gestfluxLigne">
+					 <iframe class="importFrame" src="action.php?action=synchronizeForm" name="idFrameSynchro" id="idFrameSynchro" width="100%" ></iframe>
+					</li>
+				</section>
+
+				<section id="pluginBloc">
+					<h2>Plugins :</h2>
+					<p>(Vous pouvez télécharger et installer de nouveaux plugins sur le <a href="https://github.com/ldleman/Leed-market/tree/master/Marigolds">Leed Market</a>.)</p>
+					{if="$myUser!=false"}
+					<ul class="pluginList">
+					{if="count($plugins)==0"}
+					Aucun plugin n'est installé pour le moment.
+					{else}
+					{loop="$plugins"}
+					<li class="gestfluxLigne">
+						<ul class="box-bottom">
+							<li><h2>{$value->getName()}</h2></li>
+							<li class="activeButton"><a href="action.php?action=changePluginState&plugin={$value->getUid()}&state={$value->getState()}" >{$value->getState()=="0"?"":""}</a></li>
+							<li><h4>Auteur: <a href="mailto:{$value->getMail()}">{$value->getAuthor()}</a></h4></li>
+							<li><h4>Licence: {$value->getLicence()}</h4></li>
+							<li><h4>Version: <code>{$value->getVersion()}</code></h4></li>
+							<li><h4>Site web: <a href="{$value->getLink()}">{$value->getLink()}</a></h4></li>
+							<li>{$value->getDescription()}</li>						
+						</ul>
+					</li>
+					{/loop}
+					{/if}
+					</ul>
+
+					{else}
+					<p>Vous devez être connecté pour voir les plugins.</p>
+					{/if}
+				</section>	
+				<section id="bookPlugins">
+					<h2> Autres paramètres (Plugins)</h2>	
+					{function="Plugin::callHook("setting_post_link", array(&$myUser))"}		
+					{function="Plugin::callHook("setting_post_section", array(&$myUser))"}
+				<section>
+
+			</article>
+			<nav class="pied">
+				<div class="aside_deg"></div>
+			</nav>
+			
+			</div>
+		</div> <!-- #wrap -->
+
+{else}
+	<div id="main" class="wrapper clearfix">
+		<article>
+				<h3>Vous devez &ecirc;tre connect&eacute; pour consulter vos flux </h3>
+				<p>Si vous &ecirc;tes administrateur, vous pouvez r&eacute;gler les droits de visualisation dans la partie administration.</p>
+		</article>
+	</div>
+
+{/if}
+
+{include="footer"}
